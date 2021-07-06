@@ -3,8 +3,8 @@ Bettershell is a basic netcat client, supercharged with rlwrap, socat, a large P
 
 ### Features:
 * Shells won't die on CTRL+C
-* Tab autocomplete based on a Windows command list
-* Filesystem tab autocomplete, thanks to rlwrap's smart output parser
+* Preset tab autocomplete based on a Windows command list
+* Filesystem-learning tab autocomplete, thanks to rlwrap's smart output parser
 * Working arrowkey movement
 * Searchable command history with CTRL+W
 * An accurate path prompt
