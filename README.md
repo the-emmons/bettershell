@@ -6,7 +6,7 @@ Bettershell is a basic netcat client, supercharged with rlwrap, socat, a large P
 * Preset tab autocomplete based on a Windows command list
 * Filesystem-learning tab autocomplete, thanks to rlwrap's smart output parser
 * Working arrowkey movement
-* Searchable command history with CTRL+W
+* Searchable command history with CTRL+R
 * An accurate path prompt
 * No double echo of commands
 * It's blue! Is it really powershell if it isn't blue?
