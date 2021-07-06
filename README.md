@@ -11,7 +11,7 @@ Bettershell is a basic netcat client, supercharged with rlwrap, socat, a large P
 * No double echo of commands
 * It's blue! Is it really powershell if it isn't blue?
 
-Although bettershell can be used to catch any reverse shell from a Windows box, the included 'socat.exe' binary is strongly recommended to properly pipe stderr messages to your listener - visible error messages are invaluable when privilege-escalating.
+Although bettershell can be used to catch any reverse shell from a Windows box, the included 'socat.exe' binary is strongly recommended to properly pipe stderr messages to your listener; visible error messages are invaluable when privilege-escalating.
 ## Usage
 
 Open port 445, then start up an impacket SMB server on your attack box in the same directory as socat.exe:
